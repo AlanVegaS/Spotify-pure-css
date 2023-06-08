@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/448453473f.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="search box">
+            <ul class="search-menu">
+                <li>
+                    <a href="#" class="menu-option">
+                        <i class="fa-solid fa-house menu-icon"></i>
+                        <span class="menu-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-option">
+                        <i class="fa-solid fa-magnifying-glass menu-icon"></i>
+                        <span class="menu-text">Search</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="library box">
+            <div class="library-content">
+                <div class="head-library">
+                    <a href="#" class="menu-option">
+                        <i class="fa-solid fa-layer-group fa-rotate-90 menu-icon"></i>
+                        <span class="menu-text">Your Library</span>
+                    </a>
+                    <div class="library-options">
+                        <a href="#" class="menu-option">
+                            <i class="fa-solid fa-plus menu-icon"></i>
+                        </a>
+                        <a href="#" class="menu-option">
+                            <i class="fa-solid fa-border-all menu-icon"></i>
+                        </a>
+                        <a href="#" class="menu-option">
+                            <i class="fa-solid fa-arrow-right menu-icon"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="playlist-search">
+                    <a href="#" class="menu-option">
+                        <i class="fa-solid fa-magnifying-glass menu-icon"></i>
+                        <input type="checkbox" class="check-search-playlist">
+                        <input type="text" class="input-search-playlist" placeholder="Search in your library">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="box">
+        <div class="welcome">
+            <div class="header"></div>
+            <div class="recomendation"></div>
+            <div class="greet"></div>
+        </div>
+        <div class="content">
+
+        </div>
+    </main> 
+    <footer>
+        <div class="song">
+            <div class="cover">
+                <img class="cover-album" src="media/cover.jpg" alt="">
+                <i class="fa-sharp fa-solid fa-angle-up expand-cover"></i>
+            </div>
+            <div class="info-song">
+                <a href="#" class="song-player">Numb</a>
+                <a href="#" class="artist-player">Linking Park</a>
+            </div>
+            <i class="fa-regular fa-heart icon"></i>
+        </div>
+        <div class="controls">
+            <div class="player">
+                <label for="shuffle" class="label-switch">
+                    <input type="checkbox" class="switch">
+                    <i class="fa-solid fa-shuffle icon"></i>
+                </label>
+                <i class="fa-solid fa-backward-step icon"></i>
+                <i class="fa-solid fa-circle-pause icon" id="pause"></i>
+                <i class="fa-solid fa-forward-step icon"></i>
+                <label for="repeat" class="label-switch">
+                    <input type="checkbox" class="switch">
+                    <i class="fa-solid fa-repeat icon"></i>
+                </label>
+                
+            </div>
+            <div class="slide-song">
+                <p class="time current">00:00</p>
+                <input type="range" min="0" max="100" value="50" class="volume-range green-slider">
+                <p class="time end">00:00</p>
+            </div>
+        </div>
+        <div class="settings-player">
+            <i class="fa-solid fa-microphone icon"></i>
+            <i class="fa-solid fa-bars icon"></i>
+            <i class="fa-solid fa-computer icon"></i>
+            <div class="slide-volume">
+                <i class="fa-solid fa-volume-high icon"></i>
+                <input type="range" min="0" max="100" value="50" class="volume-range green-slider">
+            </div>
+            <i class="fa-solid fa-up-right-and-down-left-from-center icon"></i>
+        </div>
+    </footer>
+</body>
+</html>
