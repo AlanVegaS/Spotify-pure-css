@@ -107,22 +107,24 @@ nav {
 .library-content .menu-icon:hover {
     background-color: var(--dark-hover);
 }
-.playlist-search {
-    position: relative;
-}
+
 .input-search-playlist{
     height: 1.2em;
     border: 0;
-    background-color: rgb(100, 100, 100);
+    width: 0;
+    background-color: transparent;
     color: var(--min-a);
     font-size: var(--normal);
-    padding: 4px;
-    transform: translateX(-150px);
-    transition: transform .2s;
+    padding: 8px;
+    transition: width .2s cubic-bezier(0,1.09,.98,.99);
     visibility: hidden;
+    border-radius: 3px;
 }
 .input-search-playlist:focus{
     outline: none;
+}
+.input-search-playlist::placeholder{
+    color: var(--min-a);
 }
 .playlist-search .check-search-playlist{
     position: absolute;
@@ -133,10 +135,9 @@ nav {
 }
 .playlist-search .check-search-playlist:checked ~ .input-search-playlist{
     visibility: visible;
-    transform: translateX(0);
-    transition: transform .2s;
+    background-color: rgb(100, 100, 100);
+    width: 200px;
 }
-
 main {
     grid-area: main;
     background-color: blueviolet;
