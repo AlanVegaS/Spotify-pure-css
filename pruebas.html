@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 10px;
+    }
+
+    .grid-item {
+      position: relative;
+      background-color: #eaeaea;
+      text-align: center;
+      aspect-ratio: 1/1; /* Establece una relación de aspecto 1:1 */
+    }
+
+    .content {
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      background-color: #ff0000;
+      margin: auto; /* Centra el contenido vertical y horizontalmente */
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item">
+      <div class="content"></div>
+    </div>
+    <div class="grid-item">
+      <div class="content"></div>
+    </div>
+    <div class="grid-item">
+      <div class="content"></div>
+    </div>
+    <!-- ...otros elementos grid-item... -->
+  </div>
+</body>
+</html>
