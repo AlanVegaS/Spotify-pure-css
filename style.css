@@ -6,12 +6,13 @@
     --min-a: rgb(156, 156, 156);
     --green: rgb(30 213 97);
     --boxes-footer: 4em;
-    --normal: 1em;
+    --normal: 1.05em;
     --small: .8em;
     --dark: rgb(19, 19, 19);
     --dark-hover: rgb(35, 35, 35);
     --small-margin: 8px;
     --hover-card: rgb(32, 32, 32);
+    --min-transition-time: .2s;
 }
 body {
     width: 100%;
@@ -24,8 +25,9 @@ body {
     background-color: black;
     box-sizing: border-box;
     padding: var(--gap-box) var(--gap-box) 0 var(--gap-box);
-    font-family: 'roboto', Arial, Helvetica, sans-serif;
+    font-family: 'Wix Madefor Display', Arial, Helvetica, sans-serif;
 }
+/*Global style*/
 .box {
     border-radius: 10px;
     background-color: var(--dark);
@@ -41,6 +43,111 @@ body {
 .icon:active{
     color: var(--min-a);
 }
+/*-Cards artist/playlist/album-*/
+.card {
+    color: var(--color-content);
+    border-radius: 5px;
+    align-items: center;
+    transition: background-color var(--min-transition-time);
+}
+.card:hover {
+    background-color: var(--hover-card);
+    cursor: pointer;
+}
+.card p {
+    font-size: var(--normal);
+    font-weight: 600;
+}
+.card span {
+    font-size: var(--small);
+    color: var(--min-a);
+}
+.card img {
+    object-fit: cover;
+    max-width: 100%;
+    border-radius: 5px;
+    aspect-ratio: 1/1;
+}
+.card p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre;
+}
+.play-pause {
+    display: flex;
+    border: none;
+    font-size: 3em;
+    padding: 0;
+    color: var(--green);
+    border-radius: 50%;
+    background: radial-gradient(black 50%, var(--green) 50%);
+    box-shadow: 0 5px 10px rgba(44, 44, 44, 0.5);
+    cursor: pointer;
+}
+.play-pause:hover {
+    transform: scale(1.05);
+}
+/*card in block*/
+.library-content.column{
+    display: block;
+}
+.column .card {
+    display: grid;
+    grid-template: 1fr 1fr / 3.5em 1fr;
+    padding: var(--small-margin);
+    height: 56px;
+}
+.column .card p {
+    margin: 0 0 0 var(--small-margin);
+}
+.column .card span {
+    margin-left: var(--small-margin);
+}
+.column .card .container-cover{
+    grid-row: span 2;
+    display: flex;
+} 
+.column .card .play-pause {
+    display: none;
+}
+/*card in item*/
+.library-content.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+.library-content.grid img{
+    padding: 12px 12px 0 12px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.grid .card p {
+    margin: 12px 12px 0 12px;
+}
+.grid .card span {
+    margin: 12px;
+    display: block;
+}
+.card img.img-artist{
+    border-radius: 50%;
+}
+.grid .card .container-cover {
+    position: relative;
+}
+.grid .card .play-pause {
+    position: absolute;
+    opacity: 0;
+    bottom: 16px;
+    right: 24px;
+    transform: translateY(8px);
+    transition: opacity,transform var(--min-transition-time) ease;
+}
+.grid .card:hover .play-pause {
+    opacity: 1;
+    transform: translateY(0);
+}
+.grid .card .play-pause:hover {
+    transform: scale(1.05);
+}
 nav {
     grid-area: nav;
     display: grid;
@@ -48,6 +155,7 @@ nav {
     grid-template-rows: var(--height-search) 1fr;
     gap: var(--gap-box);
 }
+/**Section Home-Search**/
 .search{
 }
 .search-menu {
@@ -80,12 +188,12 @@ nav {
 .menu-icon {
     font-size: 1.5em;
 }
-
+/**Section Your library**/
 .library {
     
 }
 .library-content{
-    padding: 0 8px 8px 8px;
+    margin: 8px;
 }
 .library .menu-text {
     padding-left: .5em;
@@ -108,16 +216,18 @@ nav {
 .library-content .menu-icon:hover {
     background-color: var(--dark-hover);
 }
-
+/**Search in library**/
 .input-search-playlist{
     height: 1.2em;
     border: 0;
-    width: 0;
+    width: 180px;
     background-color: transparent;
     color: var(--min-a);
     font-size: var(--normal);
     padding: 8px;
-    transition: width .3s;
+    transform: scaleX(0);
+    translate: -110px;
+    transition: all .15s;
     visibility: hidden;
     border-radius: 3px;
 }
@@ -137,7 +247,8 @@ nav {
 .check-search-playlist:checked ~ .input-search-playlist{
     visibility: visible;
     background-color: rgb(100, 100, 100);
-    width: 180px;
+    transform: scaleX(1);
+    translate: 0;
 }
 .playlist-search{
     padding: 16px 20px 0;
@@ -150,23 +261,88 @@ main {
     background-color: blueviolet;
     overflow: hidden;/*it can work border-radius*/
 }
-.header {
-    height: calc(var(--height-search)/2);
-    background-color: darkslateblue;
+.container-main {
+    width: 100%;
+    height: 20em;
+    background: linear-gradient(red, 1px , var(--dark));
+    padding: 20px;
+    box-sizing: border-box;
 }
-.recomendation {
-    height: 50%;
-    background-color: lightgray;
+.header {
+    height: calc(var(--height-search)/2.5);
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-content);
+}
+.navegation, .social-count {
+    display: flex;
+    justify-content: space-between;
+    width: 4.5em;
+}
+.navegation {
+    font-size: 1.1em;
+}
+.icon-header {
+    height: 2em;
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.icon-header:hover {
+    background-color: var(--dark-hover);
+    transform: scale(1.1);
 }
 .greet {
-    height: 50%;
-    background-color: peru;
+    margin-top: 0;
+    color: var(--color-content);
+    font-weight: 600;
+    font-size: 2.2em;
+    letter-spacing: -1px;
 }
-.welcome {
-    width: 100%;
-    height: 40em;
-    background-color: deeppink;
+.recently {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1em;
 }
+.card-recently {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-content);
+    font-weight: 600;
+    font-size: 1.05em;
+    background-color: rgba(121, 121, 121, 0.3);
+    border-radius: 5px;
+
+}
+.card-recently img{
+    width: 90px;
+    aspect-ratio: 1/1;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 0 25px rgb(44, 44, 44);
+}
+.card-recently .play-pause {
+    margin-right: 20px;
+}
+.cover-name {
+    display: flex;
+    align-items: center;
+}
+.recomendation {
+    background-color: transparent;
+}
+@media screen and (min-width: 1700px) {
+    .recently  {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+/*Player secction*/
 footer {
     grid-area: footer;
     display: flex;
@@ -239,7 +415,7 @@ footer {
     text-decoration: underline;
     color: var(--hover-a);
 }
-/*Section Player*/
+/*Section Player Control*/
 .controls {
     width: 450px;
     height: var(--boxes-footer);
@@ -278,7 +454,6 @@ footer {
 #pause:active {
     transform: scale(1);
 }
-
 /*Switch*/
 .label-switch {
     position: relative;
@@ -358,63 +533,4 @@ label.label-switch .icon{
 }
 .slide-volume .icon:hover ~ .green-slider::-webkit-slider-runnable-track{
     background-color: var(--green);
-}
-
-.content-side {
-    padding: 12px;
-}
-.card {
-    color: var(--color-content);
-    border-radius: 5px;
-    align-items: center;
-    transition: background-color .1s;
-}
-.card:hover {
-    background-color: var(--hover-card);
-    cursor: pointer;
-}
-.card p {
-    font-size: var(--normal);
-    font-weight: 600;
-    margin: 0;
-    margin-left: var(--small-margin);
-}
-.card span {
-    font-size: var(--small);
-    color: var(--min-a);
-    margin-left: var(--small-margin);
-}
-.card img {
-    object-fit: cover;
-    max-width: 100%;
-    grid-row: span 2;
-    border-radius: 5px;
-}
-.card-artist img{
-    border-radius: 50%;
-}
-
-.column .card {
-    display: grid;
-    grid-template: 1fr 1fr / 3.5em 1fr;
-    padding: var(--small-margin);
-    height: 56px;
-}
-
-
-.library-content.column{
-    display: block;
-}
-.library-content.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(90px, 1fr));
-}
-.library-content.grid p{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: pre;
-}
-.library-content.grid img{
-    aspect-ratio: 1/1;
 }
