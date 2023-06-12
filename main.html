@@ -32,7 +32,7 @@
         </div>
         <div class="library box">
             <div class="head-library">
-                <a href="#" class="menu-option">
+                <a href="#" class="menu-option transform-compact-library">
                     <i class="fa-solid fa-layer-group fa-rotate-90 menu-icon"></i>
                     <span class="menu-text">Your Library</span>
                 </a>
@@ -40,10 +40,13 @@
                     <a href="#" class="menu-option">
                         <i class="fa-solid fa-plus menu-icon"></i>
                     </a>
-                    <a href="#" class="menu-option">
+                    <a href="#" class="menu-option select-grid">
                         <i class="fa-solid fa-border-all menu-icon"></i>
                     </a>
-                    <a href="#" class="menu-option">
+                    <a href="#" class="menu-option select-list hidden">
+                        <i class="fa-solid fa-list menu-icon"></i>
+                    </a>
+                    <a href="#" class="menu-option transfor-large-library">
                         <i class="fa-solid fa-arrow-right menu-icon"></i>
                     </a>
                 </div>
@@ -55,7 +58,7 @@
                     <input type="text" class="input-search-playlist" placeholder="Search in your library">
                 </div>
             </div>
-            <section class="library-content grid">
+            <section class="library-content column">
                 <article class="card">
                     <div class="container-cover">
                         <img src="media/queen.jpg" class="img-artist" alt="">
@@ -180,6 +183,96 @@
             </div>
         </div>
         <div class="content">
+            <div class="row-content">
+                <h2>Made for you</h2>
+                <section class="library-content grid">
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/queen.jpg" class="img-artist" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play play"></i>
+                            </button>
+                        </div>
+                        <p>Queen</p>
+                        <span>Artist</span>
+                    </article>
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/duo.png" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                        <p>Relatos Duolingo</p>
+                        <span>Podcast</span>
+                    </article>
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/sky.png" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                        <p>Relax</p>
+                        <span>Playlist</span>
+                    </article>
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/audioslave.jpg" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                        <p>Audioslave</p>
+                        <span>Album • Audioslave</span>
+                    </article>
+                </section>
+            </div>
+            <div class="row-content">
+                <h2>Your top mixes</h2>
+                <section class="library-content grid">
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/queen.jpg" class="img-artist" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play play"></i>
+                            </button>
+                        </div>
+                        <p>Queen</p>
+                        <span>Artist</span>
+                    </article>
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/duo.png" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                        <p>Relatos Duolingo</p>
+                        <span>Podcast</span>
+                    </article>
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/sky.png" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                        <p>Relax</p>
+                        <span>Playlist</span>
+                    </article>
+                    <article class="card">
+                        <div class="container-cover">
+                            <img src="media/audioslave.jpg" alt="">
+                            <button class="play-pause">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                        <p>Audioslave</p>
+                        <span>Album • Audioslave</span>
+                    </article>
+                </section>
+            </div>
         </div>
     </main> 
     <footer>
@@ -227,4 +320,5 @@
         </div>
     </footer>
 </body>
+<script src="script.js"></script>
 </html>

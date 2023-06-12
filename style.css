@@ -13,6 +13,7 @@
     --small-margin: 8px;
     --hover-card: rgb(32, 32, 32);
     --min-transition-time: .2s;
+    --padding-nav-left:1.5em;
 }
 body {
     width: 100%;
@@ -20,12 +21,30 @@ body {
     margin: 0;
     display: grid;
     grid-template: 'nav main' 1fr
-                    'footer footer' 5.5em/ 25em 1fr;
+                    'footer footer' 5.5em/ 20em 1fr;
     gap: var(--gap-box);
     background-color: black;
     box-sizing: border-box;
     padding: var(--gap-box) var(--gap-box) 0 var(--gap-box);
     font-family: 'Wix Madefor Display', Arial, Helvetica, sans-serif;
+}
+.compact-library {
+    grid-template: 'nav main' 1fr
+                    'footer footer' 5.5em/ 5.5em 1fr;       
+}
+.compact-library .menu-text, .compact-library .playlist-search, 
+.compact-library .library-options, .compact-library .library .card p,
+.compact-library .library .card span {
+    display: none;
+}
+.compact-library .library-content.column{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.library-large {
+    grid-template: 'nav main' 1fr
+                    'footer footer' 5.5em/ 30em 1fr;
 }
 /*Global style*/
 .box {
@@ -110,21 +129,19 @@ body {
 .column .card .play-pause {
     display: none;
 }
+.column.compact {
+
+}
 /*card in item*/
 .library-content.grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 }
-.library-content.grid img{
-    padding: 12px 12px 0 12px;
+/*.library-content.grid img{
     box-sizing: border-box;
     border-radius: 20px;
-}
-.grid .card p {
-    margin: 12px 12px 0 12px;
-}
+}*/
 .grid .card span {
-    margin: 12px;
     display: block;
 }
 .card img.img-artist{
@@ -137,7 +154,7 @@ body {
     position: absolute;
     opacity: 0;
     bottom: 16px;
-    right: 24px;
+    right: 12px;
     transform: translateY(8px);
     transition: opacity,transform var(--min-transition-time) ease;
 }
@@ -157,6 +174,7 @@ nav {
 }
 /**Section Home-Search**/
 .search{
+    padding: 1em var(--padding-nav-left);
 }
 .search-menu {
     height: 100%;
@@ -164,7 +182,7 @@ nav {
     grid-template-rows: 1fr 1fr;
     color: var(--color-content);
     margin: 0;
-    padding: 1em 2em;
+    padding: 0;
     align-items: center;
     box-sizing: border-box;
 
@@ -201,7 +219,8 @@ nav {
 .head-library {
     display: flex;
     justify-content: space-between;
-    padding: 16px 16px 0;
+    padding: var(--padding-nav-left);
+    padding-bottom: 0;
 }
 .library-options {
     display: flex;
@@ -251,10 +270,13 @@ nav {
     translate: 0;
 }
 .playlist-search{
-    padding: 16px 20px 0;
+    padding: 16px var(--padding-nav-left) 0;
 }
 .menu-option .menu-icon {
     padding-right: 4px;
+}
+.library-content.grid .card {
+    padding: 12px;
 }
 main {
     grid-area: main;
@@ -263,7 +285,6 @@ main {
 }
 .container-main {
     width: 100%;
-    height: 20em;
     background: linear-gradient(red, 1px , var(--dark));
     padding: 20px;
     box-sizing: border-box;
@@ -318,13 +339,13 @@ main {
     font-size: 1.05em;
     background-color: rgba(121, 121, 121, 0.3);
     border-radius: 5px;
-
+    transition: background-color .2s;
 }
 .card-recently img{
     width: 90px;
     aspect-ratio: 1/1;
     margin-right: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 5px 0 25px rgb(44, 44, 44);
 }
 .card-recently .play-pause {
@@ -337,6 +358,36 @@ main {
 .recomendation {
     background-color: transparent;
 }
+.card-recently .play-pause {
+    opacity: 0;
+    transition: opacity .2s;
+}
+.card-recently:hover .play-pause {
+    opacity: 1;
+}
+.card-recently:hover {
+    background-color: rgba(121, 121, 121, 0.5);
+}
+.row-content {
+    color: var(--color-content);
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+}
+.row-content .grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-rows: 1fr;
+    grid-auto-rows: 10px;
+    grid-auto-columns: 10px;
+    gap: 1em;
+    margin: 0;
+}
+.row-content .grid .card {
+    background-color: rgba(48, 48, 48, 0.3);
+    padding: 18px;
+}
+.row-content .grid .card:hover {
+    background-color: rgba(48, 48, 48, 0.6);
+}
 @media screen and (min-width: 1700px) {
     .recently  {
         grid-template-columns: 1fr 1fr 1fr;
@@ -344,6 +395,9 @@ main {
 }
 /*Player secction*/
 footer {
+    position: sticky;
+    bottom: 0;
+    background-color: black;
     grid-area: footer;
     display: flex;
     justify-content: space-between;
@@ -533,4 +587,7 @@ label.label-switch .icon{
 }
 .slide-volume .icon:hover ~ .green-slider::-webkit-slider-runnable-track{
     background-color: var(--green);
+}
+.hidden {
+    display: none;
 }
