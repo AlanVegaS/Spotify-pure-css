@@ -96,8 +96,6 @@ function LargeLibrary(isLibraryLarge) {
     }
 }
 
-
-
 window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateGrid);
     updateGrid();
